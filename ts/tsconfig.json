@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
     "strict": true,
-    "target": "ES5",
+    "target": "ES5",  // 변환시킬 Javascript 문법 버전
     "module": "CommonJS",
     "alwaysStrict": true,
-    "noImplicitAny": true,
+    "noImplicitAny": true,  // any 사용 불가. 타입을 지정해야함
     "noImplicitThis": true,
-    "sourceMap": true,
+    "sourceMap": true,  // js와 ts의 연결정보. 이 옵션을 켜줘야 브라우저에서 디버깅 시 ts 코드 확인 가능
     "downlevelIteration": true
   }
 }
