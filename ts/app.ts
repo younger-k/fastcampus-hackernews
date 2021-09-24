@@ -1,10 +1,33 @@
-type Store = {
+/**
+ * <typing 방법>
+ * 1. type alias
+ * type NewsFeed = News & {
+ *   comments_count: number;
+ *   points: number;
+ *   read?: boolean;
+ * }
+ * 
+ * 2. interface
+ * interface NewsFeed extends News {
+ *   comments_count: number;
+ *   points: number;
+ *   read?: boolean;
+ * }
+ * 
+ * type alias와 interface 간 기능상의 특별한 차이는 없다.
+ * 문법의 차이만 조금 있을 뿐이고 원하는 것을 선택하여 일관성 있는 코드를 작성하도록 하자.
+ * 
+ * 확장형의 타입은 인터페이스를 선호하는 경향 있다.
+ * 유니온 타입(|)은 type alias만 지원! ex. type Type = 'a' | 'b'
+ */
+
+interface Store {
   currentPage: number;
   feeds: NewsFeed[];
 }
 
-type News = {
-  id: number;
+interface News {
+  readonly id: number;  // 해당 필드를 코드 상에서 수정이 불가하도록 함!
   user: string;
   time_ago: string;
   title: string;
@@ -12,17 +35,17 @@ type News = {
   content: string;
 }
 
-type NewsFeed = News & {
+interface NewsFeed extends News {
   comments_count: number;
   points: number;
   read?: boolean;
 }
 
-type NewsDetail = News & {
+interface NewsDetail extends News {
   comments: NewsComment[];
 }
 
-type NewsComment = News & {
+interface NewsComment extends News {
   comments: NewsComment[];
   level: number;
 }
